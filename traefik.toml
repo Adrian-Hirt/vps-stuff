@@ -16,4 +16,11 @@ email = ""
 storage = "acme.json"
 entryPoint = "https"
 onHostRule = true
-onDemand = true
+[[acme.domains]]
+  main = "ide.hirt.one"
+[[acme.domains]]
+  main = "preview.hirt.one"
+[[acme.domains]]
+  main = "monitoring.hirt.one"
+[acme.httpChallenge]
+  entryPoint = "http"

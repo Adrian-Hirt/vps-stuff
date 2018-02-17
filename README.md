@@ -1,2 +1,2 @@
 # vps-stuff
-Config stuff / traefik stuff for my vps
+Some config files and docker files I'm using for my own VPS.
