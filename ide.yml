@@ -2,28 +2,28 @@ version: '3'
 services:
   web:
     image: adrianhirt/c9rails:1.2
-	networks:
-	  - proxy
-	container_name: ide
+    networks:
+      - proxy
+    container_name: ide
     environment: 
       - c9port=443
       - user=adrian
       - pass=
     volumes:
       - code:/workspace
-	labels:
-	  traefik.ide.frontend.rule: "Host:ide.hirt.one;PathPrefixStrip:/"
-	  traefik.ide.port: "443"
-      traefik.ide.frontend.entryPoints: "https"
-	  traefik.preview.frontend.rule: "Host:preview.hirt.one;PathPrefixStrip:/"
-	  traefik.preview.port: "1337"
-      traefik.preview.protocol: "https"
-	  traefik.enable: "true"
-	  traefik.docker.network: "proxy"
+    labels:
+      traefik.ide.frontend.rule: "Host:ide.hirt.one;PathPrefixStrip:/"
+      traefik.ide.port: "443"
+      traefik.ide.backend: "ide"
+      traefik.preview.frontend.rule: "Host:preview.hirt.one;PathPrefixStrip:/"
+      traefik.preview.port: "3000"
+      traefik.preview.backend: "preview"
+      traefik.enable: "true"
+      traefik.docker.network: "proxy"
 networks:
     proxy:
-	    external:
-		    name: proxy
+        external:
+            name: proxy
 volumes:
     code:
         external:
